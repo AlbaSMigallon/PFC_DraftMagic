@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 19 may 2024 19:58:11 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="draft_magic" name="persistencias.Mazo" optimistic-lock="none" table="mazo">
+        <comment>Tabla de historico de mazos construidos</comment>
+        <id name="idMazo" type="java.lang.Integer">
+            <column name="ID_MAZO"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="persistencias.Usuario" fetch="select" name="usuario">
+            <column name="ID_USUARIO">
+                <comment>Identificador del usuario creador del mazo</comment>
+            </column>
+        </many-to-one>
+        <property name="fechaCreacion" type="timestamp">
+            <column length="19" name="FECHA_CREACION">
+                <comment>Fecha de creacion del mazo</comment>
+            </column>
+        </property>
+        <property name="cantidadCartas" type="int">
+            <column name="CANTIDAD_CARTAS" not-null="true">
+                <comment>Cantidad del cartas que componen el mazo</comment>
+            </column>
+        </property>
+        <property name="winrate" type="big_decimal">
+            <column name="WINRATE" not-null="true" precision="6">
+                <comment>WINRATE del mazo</comment>
+            </column>
+        </property>
+        <property name="curvaMana" type="java.lang.Integer">
+            <column name="CURVA_MANA">
+                <comment>Curva de mana del mazo</comment>
+            </column>
+        </property>
+        <property name="colorW" type="java.lang.Integer">
+            <column name="COLOR_W">
+                <comment>Cantidad de cartas del mazo de color blanco</comment>
+            </column>
+        </property>
+        <property name="colorB" type="java.lang.Integer">
+            <column name="COLOR_B">
+                <comment>Cantidad de cartas del mazo de color negro</comment>
+            </column>
+        </property>
+        <property name="colorR" type="java.lang.Integer">
+            <column name="COLOR_R">
+                <comment>Cantidad de cartas del mazo de color rojo, </comment>
+            </column>
+        </property>
+        <property name="colorG" type="java.lang.Integer">
+            <column name="COLOR_G">
+                <comment>Cantidad de cartas del mazo de color verde</comment>
+            </column>
+        </property>
+        <property name="colorU" type="java.lang.Integer">
+            <column name="COLOR_U">
+                <comment>Cantidad de cartas del mazo de color azul</comment>
+            </column>
+        </property>
+        <property name="multiColor" type="java.lang.Integer">
+            <column name="MULTI_COLOR">
+                <comment>Cantidad de cartas del mazo con varios colores</comment>
+            </column>
+        </property>
+        <property name="criaturas" type="java.lang.Integer">
+            <column name="CRIATURAS">
+                <comment>Cantidad de cartas de tipo criatura</comment>
+            </column>
+        </property>
+        <property name="artefactos" type="java.lang.Integer">
+            <column name="ARTEFACTOS">
+                <comment>Cantidad de cartas de tipo artefacto</comment>
+            </column>
+        </property>
+        <property name="instantaneos" type="java.lang.Integer">
+            <column name="INSTANTANEOS">
+                <comment>Cantidad de cartas de tipo instantaneo, encantamiento y brujeria</comment>
+            </column>
+        </property>
+        <property name="comunes" type="java.lang.Integer">
+            <column name="COMUNES">
+                <comment>Cantidad de cartas de rareza comun</comment>
+            </column>
+        </property>
+        <property name="infrecuentes" type="java.lang.Integer">
+            <column name="INFRECUENTES">
+                <comment>Cantidad de cartas de rareza infrecuente</comment>
+            </column>
+        </property>
+        <property name="raras" type="java.lang.Integer">
+            <column name="RARAS">
+                <comment>Cantidad de cartas de rareza rara</comment>
+            </column>
+        </property>
+        <property name="legendarias" type="java.lang.Integer">
+            <column name="LEGENDARIAS">
+                <comment>Cantidad de cartas de rareza legendaria</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

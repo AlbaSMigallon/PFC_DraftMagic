@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 19 may 2024 19:58:11 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="draft_magic" name="persistencias.Carta" optimistic-lock="none" table="carta">
+        <comment>Tabla de las cartas y estadisticas de cartas</comment>
+        <id name="idCarta" type="java.lang.Integer">
+            <column name="ID_CARTA"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombreOriginal" type="string">
+            <column length="100" name="NOMBRE_ORIGINAL">
+                <comment>Nombre original de la carta en ingles</comment>
+            </column>
+        </property>
+        <property name="nombreEspaniol" type="string">
+            <column length="100" name="NOMBRE_ESPANIOL">
+                <comment>Nombre de la traduccion al espaniol de la carta</comment>
+            </column>
+        </property>
+        <property name="rareza" type="string">
+            <column length="45" name="RAREZA">
+                <comment>Rareza de la carta</comment>
+            </column>
+        </property>
+        <property name="coste" type="java.lang.Integer">
+            <column name="COSTE">
+                <comment>Coste de mana de la carta</comment>
+            </column>
+        </property>
+        <property name="color" type="string">
+            <column length="30" name="COLOR">
+                <comment>Color o colores de carta</comment>
+            </column>
+        </property>
+        <property name="tipo" type="string">
+            <column length="100" name="TIPO">
+                <comment>Tipo de carta</comment>
+            </column>
+        </property>
+        <property name="png" type="string">
+            <column length="300" name="PNG">
+                <comment>Direccion de descarga de png de la carta en espaniol</comment>
+            </column>
+        </property>
+        <property name="coleccion" type="string">
+            <column length="45" name="COLECCION">
+                <comment>Nombre de la coleccion a la que pertenece la carta</comment>
+            </column>
+        </property>
+        <property name="seen" type="java.lang.Integer">
+            <column name="SEEN">
+                <comment>Cantidad de veces que se ha visto la carta en draft</comment>
+            </column>
+        </property>
+        <property name="alsa" type="big_decimal">
+            <column name="ALSA" precision="4">
+                <comment>Ultima ronda en la que se vio la carta y no se pickeo</comment>
+            </column>
+        </property>
+        <property name="ata" type="big_decimal">
+            <column name="ATA" precision="4">
+                <comment>Ronda en la que se suele pickear la carta</comment>
+            </column>
+        </property>
+        <property name="picked" type="java.lang.Integer">
+            <column name="PICKED">
+                <comment>Cuantas veces se ha pickeado la carta en un draft</comment>
+            </column>
+        </property>
+        <property name="gp" type="java.lang.Integer">
+            <column name="GP">
+                <comment>Porcentaje de veces que se ha pickeado la carta</comment>
+            </column>
+        </property>
+        <property name="gpWr" type="big_decimal">
+            <column name="GP_WR" precision="4">
+                <comment>Winrate de la carta</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

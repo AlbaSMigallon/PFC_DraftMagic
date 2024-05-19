@@ -6,23 +6,23 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/antlr-2.7.7.jar"/>
-	<classpathentry kind="lib" path="lib/byte-buddy-1.12.7.jar"/>
-	<classpathentry kind="lib" path="lib/classmate-1.5.1.jar"/>
-	<classpathentry kind="lib" path="lib/FastInfoset-1.2.15.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-commons-annotations-5.1.2.Final.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-core-5.6.5.Final.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-jpamodelgen-5.6.5.Final.jar"/>
-	<classpathentry kind="lib" path="lib/istack-commons-runtime-3.0.7.jar"/>
-	<classpathentry kind="lib" path="lib/jandex-2.4.2.Final.jar"/>
-	<classpathentry kind="lib" path="lib/javax.activation-api-1.2.0.jar"/>
-	<classpathentry kind="lib" path="lib/javax.persistence-api-2.2.jar"/>
-	<classpathentry kind="lib" path="lib/jaxb-api-2.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/jaxb-runtime-2.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/jboss-logging-3.4.3.Final.jar"/>
-	<classpathentry kind="lib" path="lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.18.jar"/>
-	<classpathentry kind="lib" path="lib/stax-ex-1.8.jar"/>
-	<classpathentry kind="lib" path="lib/txw2-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/byte-buddy-1.12.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/classmate-1.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/FastInfoset-1.2.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/hibernate-commons-annotations-5.1.2.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/hibernate-core-5.6.5.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/hibernate-jpamodelgen-5.6.5.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/istack-commons-runtime-3.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jandex-2.4.2.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/javax.activation-api-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/javax.persistence-api-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jaxb-api-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jaxb-runtime-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jboss-logging-3.4.3.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/stax-ex-1.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/txw2-2.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

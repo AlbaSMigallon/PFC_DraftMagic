@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 19 may 2024 19:58:11 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="draft_magic" name="persistencias.Usuario" optimistic-lock="none" table="usuario">
+        <comment>Datos usuario</comment>
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="ID_USUARIO"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="50" name="NOMBRE" not-null="true">
+                <comment>Nombre del usuario</comment>
+            </column>
+        </property>
+        <property name="contrasenia" type="string">
+            <column length="30" name="CONTRASENIA" not-null="true">
+                <comment>Contrasenia del usuario</comment>
+            </column>
+        </property>
+        <property name="numDraft" type="java.lang.Integer">
+            <column name="NUM_DRAFT">
+                <comment>Numero de drafts jugados por el usuario</comment>
+            </column>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="mazos" table="mazo">
+            <key>
+                <column name="ID_USUARIO">
+                    <comment>Identificador del usuario creador del mazo</comment>
+                </column>
+            </key>
+            <one-to-many class="persistencias.Mazo"/>
+        </set>
+    </class>
+</hibernate-mapping>
