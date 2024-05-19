@@ -7,9 +7,45 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-all-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-anim-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-awt-util-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-bridge-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-codec-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-constants-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-css-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-dom-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-ext-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-extension-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-gui-util-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-gvt-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-i18n-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-parser-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-rasterizer-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-script-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-shared-resources-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-slideshow-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-squiggle-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-svgbrowser-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-svg-dom-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-svggen-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-svgpp-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-svgrasterizer-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-swing-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-test-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-test-old-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-test-svg-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-test-swing-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-transcoder-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-ttf2svg-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-util-1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-util-1.17-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/batik-xml-1.17.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/byte-buddy-1.12.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/classmate-1.5.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/FastInfoset-1.2.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/fop-transcoder-allinone-2.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/gson-2.8.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/hibernate-commons-annotations-5.1.2.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/hibernate-core-5.6.5.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/hibernate-jpamodelgen-5.6.5.Final.jar"/>
@@ -22,7 +58,12 @@
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jboss-logging-3.4.3.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/rhino-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/serializer-2.7.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/stax-ex-1.8.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/txw2-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/xml-apis-ext-1.3.04.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alba/Documents/EFA/2_DAM/0_PROYECTO/Proyecto/PFC_DraftMagic_AlbaSanchezMigallon/lib/xmlgraphics-commons-2.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
