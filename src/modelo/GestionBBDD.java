@@ -1,8 +1,7 @@
 package modelo;
 
-
-
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.context.internal.ManagedSessionContext;
 import org.hibernate.query.Query;
+
 
 import persistencias.Usuario;
 import persistencias.Carta;
@@ -71,6 +71,38 @@ public class GestionBBDD {
 				session.close();
 			}
 		}
+	}
+
+	public boolean selectColeccion(String nombreColeccion) {
+		Session session = null;
+		boolean esColeccionEnBBDD=false;
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+
+			Query query = session.createSQLQuery("SELECT DISTINCT COLECCION FROM CARTA WHERE COLECCION = :coleccion")
+	                .setParameter("coleccion", nombreColeccion);
+			List<String> nombresDistintos = query.list();
+
+	        session.getTransaction().commit();
+	        session.close();
+	        
+	        if(!nombresDistintos.isEmpty()) {
+	        	//encuentra coleccion
+	        	esColeccionEnBBDD=true;
+	        }
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			if (session != null) {
+				session.getTransaction().rollback();
+			}
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return esColeccionEnBBDD;
 	}
 
 	public void cerrarPoolConexiones() {

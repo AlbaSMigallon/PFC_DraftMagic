@@ -17,15 +17,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class ProcesarColeccion extends Thread {
-	private static String rutaJSON;
-	private static String rutaCSV;
+
+	private static String nombreCSV;
 	private static String nombreColeccion;
 	private static ArrayList<Carta> cartas;
 
-	public ProcesarColeccion(String rutaJSON, String rutaCSV, String nombreColeccion) {
+	public ProcesarColeccion(String nombreCSV, String nombreColeccion) {
 		super();
-		this.rutaJSON = rutaJSON;
-		this.rutaCSV = rutaCSV;
+		this.nombreCSV = nombreCSV;
 		this.nombreColeccion = nombreColeccion;
 		this.cartas = new ArrayList<Carta>();
 	}
@@ -45,7 +44,7 @@ public class ProcesarColeccion extends Thread {
 	private static void cargaJson(String coleccion) {
 		System.out.println("Iniciamos carga JSON");
 		try (JsonReader reader = new JsonReader(
-				new InputStreamReader(new FileInputStream("archivos_datos/all-cards-20240103101329.json")))) {
+				new InputStreamReader(new FileInputStream("archivos_datos/all-cards-20240103101329.json")))) {// el archivo JSON es el mismo para todas las cartas
 			reader.beginArray();
 			while (reader.hasNext()) {
 				reader.beginObject();
@@ -106,7 +105,7 @@ public class ProcesarColeccion extends Thread {
 							tipo = typeLine.trim();
 						}
 
-						// Clasificar el tipo en base a las reglas 
+						// Clasificar el tipo en base a las reglas
 						if (tipo.contains("Creature")) {
 							tipo = "Creature";
 						} else if (tipo.equals("Sorcery") || tipo.equals("Enchantment") || tipo.equals("Instant")
@@ -154,8 +153,7 @@ public class ProcesarColeccion extends Thread {
 		try {
 			// crear carpeta cartas por coleccion
 			File carpeta = new File(
-					"C:\\Users\\Alba\\Documents\\EFA\\2_DAM\\0_PROYECTO\\Proyecto\\PFC_DraftMagic_AlbaSanchezMigallonArias\\"
-							+ coleccion + "_PNG_cartas");
+					coleccion + "_PNG_cartas");
 			if (!carpeta.exists()) {
 				carpeta.mkdirs();
 			}
@@ -188,7 +186,7 @@ public class ProcesarColeccion extends Thread {
 		}
 	}
 
-	private static void cargaCSV(String nombreCSV) {
+	private static void cargaCSV() {
 		System.out.println("Iniciamos carga CSV");
 		String linea;
 		String separador = ";";
@@ -258,13 +256,13 @@ public class ProcesarColeccion extends Thread {
 			sessionFactory = configuration.buildSessionFactory();
 
 			// procesar CSV
-			cargaCSV("card-ratings-2024-05-12.csv");
+			cargaCSV();
 			// procesarJSON
 			cargaJson("ltr");
 
 			GestionBBDD gBD = GestionBBDD.getInstance();
 			gBD.insertarCartasEnBDD(cartas);
-			// descargarPNG("ltr");
+			descargarPNG("ltr");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
