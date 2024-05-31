@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 19 may 2024 19:58:11 by Hibernate Tools 5.4.33.Final
+// Generated 27 may 2024 19:14:55 by Hibernate Tools 5.4.33.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,6 +21,7 @@ public class Mazo implements java.io.Serializable {
 	private Integer colorG;
 	private Integer colorU;
 	private Integer multiColor;
+	private Integer colorless;
 	private Integer criaturas;
 	private Integer artefactos;
 	private Integer instantaneos;
@@ -39,8 +40,8 @@ public class Mazo implements java.io.Serializable {
 
 	public Mazo(Usuario usuario, Date fechaCreacion, int cantidadCartas, BigDecimal winrate, Integer curvaMana,
 			Integer colorW, Integer colorB, Integer colorR, Integer colorG, Integer colorU, Integer multiColor,
-			Integer criaturas, Integer artefactos, Integer instantaneos, Integer comunes, Integer infrecuentes,
-			Integer raras, Integer legendarias) {
+			Integer colorless, Integer criaturas, Integer artefactos, Integer instantaneos, Integer comunes,
+			Integer infrecuentes, Integer raras, Integer legendarias) {
 		this.usuario = usuario;
 		this.fechaCreacion = fechaCreacion;
 		this.cantidadCartas = cantidadCartas;
@@ -52,6 +53,7 @@ public class Mazo implements java.io.Serializable {
 		this.colorG = colorG;
 		this.colorU = colorU;
 		this.multiColor = multiColor;
+		this.colorless = colorless;
 		this.criaturas = criaturas;
 		this.artefactos = artefactos;
 		this.instantaneos = instantaneos;
@@ -155,6 +157,14 @@ public class Mazo implements java.io.Serializable {
 
 	public void setMultiColor(Integer multiColor) {
 		this.multiColor = multiColor;
+	}
+
+	public Integer getColorless() {
+		return this.colorless;
+	}
+
+	public void setColorless(Integer colorless) {
+		this.colorless = colorless;
 	}
 
 	public Integer getCriaturas() {
