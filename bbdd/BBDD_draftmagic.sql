@@ -3,25 +3,33 @@ DROP DATABASE IF EXISTS DRAFT_MAGIC;
 CREATE DATABASE IF NOT EXISTS DRAFT_MAGIC CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE DRAFT_MAGIC;
 
--- Informacion de las cartas y estadisticas de cartas. Mezcla la info del json con las estadisticas del csv
+CREATE TABLE IF NOT EXISTS COLECCION(
+    NOMBRE varchar(50) NOT NULL COMMENT 'Nombre de la coleccion',
+    INSERTADO INT(1) NOT NULL DEFAULT 0 COMMENT 'Indica si el proceso de creacion de cartas y de descarga de cartas esta acabado. 1 Insertado completamente 0 no insertado',
+    CONSTRAINT PK_COLECCION PRIMARY KEY (NOMBRE)
+)COMMENT 'Tabla de coleccion para controlar que la coleccion se encuentra insertada al completo';
+ALTER TABLE COLECCION CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Informacion de las cartas y estadisticas de cartas. Mezcla la informacion del JSON con las estadisticas del CSV
 CREATE TABLE IF NOT EXISTS CARTA(
-	ID_CARTA INT NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la carta',
+    ID_CARTA INT NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la carta',
     NOMBRE_ORIGINAL VARCHAR(100) COMMENT 'Nombre original de la carta en ingles',
     NOMBRE_ESPANIOL VARCHAR(100) COMMENT 'Nombre de la traduccion al espaniol de la carta',
     RAREZA VARCHAR(45) COMMENT 'Rareza de la carta',
-    COSTE INT  DEFAULT 0 COMMENT 'Coste de mana de la carta',
+    COSTE INT DEFAULT 0 COMMENT 'Coste de mana de la carta',
     COLOR VARCHAR(30) COMMENT 'Color o colores de carta',
     TIPO VARCHAR(100) COMMENT 'Tipo de carta',
     PNG VARCHAR(300) COMMENT 'Direccion de descarga de png de la carta en espaniol',
     COLECCION VARCHAR(45) COMMENT 'Nombre de la coleccion a la que pertenece la carta',
-    SEEN INT  DEFAULT 0 COMMENT 'Cantidad de veces que se ha visto la carta en draft',
+    SEEN INT DEFAULT 0 COMMENT 'Cantidad de veces que se ha visto la carta en draft',
     ALSA DECIMAL(4,2) DEFAULT 0 COMMENT 'Ultima ronda en la que se vio la carta y no se pickeo',
     ATA DECIMAL(4,2) DEFAULT 0 COMMENT 'Ronda en la que se suele pickear la carta',
-    PICKED INT  DEFAULT 0 COMMENT 'Cuantas veces se ha pickeado la carta en un draft',
+    PICKED INT DEFAULT 0 COMMENT 'Cuantas veces se ha pickeado la carta en un draft',
     GP INT DEFAULT 0 COMMENT 'Porcentaje de veces que se ha pickeado la carta',
     GP_WR DECIMAL(4,2) DEFAULT 0 COMMENT 'Winrate de la carta',
-	CONSTRAINT PK_CARTA PRIMARY KEY (ID_CARTA)
-)COMMENT 'Tabla de las cartas y estadisticas de cartas';
+    CONSTRAINT PK_CARTA PRIMARY KEY (ID_CARTA),
+    CONSTRAINT FK_COLECCION_CARTA FOREIGN KEY (COLECCION) REFERENCES COLECCION(NOMBRE)
+) COMMENT 'Tabla de las cartas y estadisticas de cartas';
 
 ALTER TABLE CARTA CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -49,6 +57,7 @@ CREATE TABLE IF NOT EXISTS MAZO(
     COLOR_G INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo de color verde',
     COLOR_U INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo de color azul',
     MULTI_COLOR INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo con varios colores',
+    COLORLESS INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo incoloras',
     CRIATURAS INT DEFAULT 0 COMMENT 'Cantidad de cartas de tipo criatura',
     ARTEFACTOS INT DEFAULT 0 COMMENT 'Cantidad de cartas de tipo artefacto',
 	INSTANTANEOS INT DEFAULT 0 COMMENT 
