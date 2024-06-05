@@ -8,6 +8,7 @@ import persistencias.Carta;
 
 public class JugadorUsuario extends Jugador {
 	private Usuario usuario;
+	protected ArrayList<Carta> mazoConstruido = new ArrayList<Carta>();
 
 	public JugadorUsuario(Usuario usuario) {
 		super();
@@ -15,6 +16,7 @@ public class JugadorUsuario extends Jugador {
 		this.sobres = new ArrayList<Sobre>();
 		this.mazo = new ArrayList<Carta>();
 		this.usuario = usuario;
+		this.mazoConstruido = mazoConstruido;
 	}
 
 	public Usuario getUsuario() {
@@ -28,4 +30,13 @@ public class JugadorUsuario extends Jugador {
 	public void agregarSobre(Sobre sobre) {
         this.sobres.add(sobre);
     }
+
+	public ArrayList<Carta> getMazoConstruido() {
+		return mazoConstruido;
+	}
+
+	public void setMazoConstruido(ArrayList<Carta> mazoConstruido) {
+		this.mazoConstruido = mazoConstruido;
+	}
+	
 }

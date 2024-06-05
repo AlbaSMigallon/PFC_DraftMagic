@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 27 may 2024 19:14:55 by Hibernate Tools 5.4.33.Final
+// Generated 2 jun 2024 19:24:53 by Hibernate Tools 5.4.33.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,11 +10,12 @@ import java.util.Date;
 public class Mazo implements java.io.Serializable {
 
 	private Integer idMazo;
+	private Coleccion coleccion;
 	private Usuario usuario;
 	private Date fechaCreacion;
 	private int cantidadCartas;
 	private BigDecimal winrate;
-	private Integer curvaMana;
+	private BigDecimal curvaMana;
 	private Integer colorW;
 	private Integer colorB;
 	private Integer colorR;
@@ -38,10 +39,11 @@ public class Mazo implements java.io.Serializable {
 		this.winrate = winrate;
 	}
 
-	public Mazo(Usuario usuario, Date fechaCreacion, int cantidadCartas, BigDecimal winrate, Integer curvaMana,
-			Integer colorW, Integer colorB, Integer colorR, Integer colorG, Integer colorU, Integer multiColor,
-			Integer colorless, Integer criaturas, Integer artefactos, Integer instantaneos, Integer comunes,
-			Integer infrecuentes, Integer raras, Integer legendarias) {
+	public Mazo(Coleccion coleccion, Usuario usuario, Date fechaCreacion, int cantidadCartas, BigDecimal winrate,
+			BigDecimal curvaMana, Integer colorW, Integer colorB, Integer colorR, Integer colorG, Integer colorU,
+			Integer multiColor, Integer colorless, Integer criaturas, Integer artefactos, Integer instantaneos,
+			Integer comunes, Integer infrecuentes, Integer raras, Integer legendarias) {
+		this.coleccion = coleccion;
 		this.usuario = usuario;
 		this.fechaCreacion = fechaCreacion;
 		this.cantidadCartas = cantidadCartas;
@@ -69,6 +71,14 @@ public class Mazo implements java.io.Serializable {
 
 	public void setIdMazo(Integer idMazo) {
 		this.idMazo = idMazo;
+	}
+
+	public Coleccion getColeccion() {
+		return this.coleccion;
+	}
+
+	public void setColeccion(Coleccion coleccion) {
+		this.coleccion = coleccion;
 	}
 
 	public Usuario getUsuario() {
@@ -103,11 +113,11 @@ public class Mazo implements java.io.Serializable {
 		this.winrate = winrate;
 	}
 
-	public Integer getCurvaMana() {
+	public BigDecimal getCurvaMana() {
 		return this.curvaMana;
 	}
 
-	public void setCurvaMana(Integer curvaMana) {
+	public void setCurvaMana(BigDecimal curvaMana) {
 		this.curvaMana = curvaMana;
 	}
 

@@ -2,8 +2,10 @@ package controlador;
 
 import com.google.gson.stream.JsonReader;
 
-import modelo.GestionBBDD;
+import modelo.ProcesarColeccionDAO;
 import persistencias.Carta;
+import persistencias.Coleccion;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
@@ -16,35 +18,72 @@ import java.util.regex.Pattern;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class ProcesarColeccion extends Thread {
+public class ProcesadorColeccion extends Thread{
 
 	private static String nombreCSV;
 	private static String nombreColeccion;
 	private static ArrayList<Carta> cartas;
+	private static Coleccion coleccion;
 
-	public ProcesarColeccion(String nombreCSV, String nombreColeccion) {
+	public ProcesadorColeccion(String nombreCSV, String nombreColeccion) {
 		super();
 		this.nombreCSV = nombreCSV;
 		this.nombreColeccion = nombreColeccion;
 		this.cartas = new ArrayList<Carta>();
+		this.coleccion= new Coleccion(nombreColeccion);
 	}
 
 	// Metodo para extraer el valor numerico del coste de mana
 	// ejemplo "mana_cost":"{2}{W}{W}"
 	private static int procesarManaCost(String manaCost) {
 		int totalCost = 0;
-		Pattern pattern = Pattern.compile("\\{(\\d+)\\}"); // Busca numeros dentro de {}
-		Matcher matcher = pattern.matcher(manaCost);
-		while (matcher.find()) {
-			totalCost += Integer.parseInt(matcher.group(1));
-		}
+		
+		String[] mana = manaCost.split("\\{");
+		
+		 for (String simbolo : mana) {
+	            if (simbolo.isEmpty()) continue;
+	            simbolo = simbolo.replace("}", "");
+
+	            switch (simbolo) {
+	                case "W":
+	                	totalCost++;
+	                    break;
+	                case "U":
+	                	totalCost++;
+	                    break;
+	                case "B":
+	                	totalCost++;
+	                    break;
+	                case "R":
+	                	totalCost++;
+	                    break;
+	                case "G":
+	                	totalCost++;
+	                    break;
+	                default:
+	                    try {
+	                        totalCost+= Integer.parseInt(simbolo);
+	                    } catch (NumberFormatException e) {
+	                        totalCost = 0;
+	                    }
+	                    break;
+	            }
+		 }
 		return totalCost;
 	}
 
-	private static void cargaJson(String coleccion) {
+	private static void cargaJson() {
 		System.out.println("Iniciamos carga JSON");
 		try (JsonReader reader = new JsonReader(
-				new InputStreamReader(new FileInputStream("archivos_datos/all-cards-20240103101329.json")))) {// el archivo JSON es el mismo para todas las cartas
+				new InputStreamReader(new FileInputStream("archivos_datos/all-cards-20240103101329.json")))) {// el
+																												// archivo
+																												// JSON
+																												// es el
+																												// mismo
+																												// para
+																												// todas
+																												// las
+																												// cartas
 			reader.beginArray();
 			while (reader.hasNext()) {
 				reader.beginObject();
@@ -119,7 +158,7 @@ public class ProcesarColeccion extends Thread {
 					}
 				}
 				reader.endObject();
-				if (set.equals(coleccion) && idioma.equals("es")) {
+				if (set.equals(coleccion.getNombre()) && idioma.equals("es")) {
 					try {
 						for (int i = 0; i < cartas.size(); i++) {
 							Carta carta = cartas.get(i);
@@ -147,13 +186,38 @@ public class ProcesarColeccion extends Thread {
 			e.printStackTrace();
 		}
 	}
+	
+	public static boolean deleteDirectory(File dir) {
+        if (dir.isDirectory()) {
+            // Si es un directorio, recorrer todos los archivos y directorios dentro
+            File[] children = dir.listFiles();
+            if (children != null) {
+                for (File child : children) {
+                    boolean success = deleteDirectory(child);
+                    if (!success) {
+                        return false;
+                    }
+                }
+            }
+        }
+        // Finalmente, borrar el archivo o directorio actual
+        return dir.delete();
+    }
 
-	private static void descargarPNG(String coleccion) {
+	private static void descargarPNG() {
 		System.out.println("Iniciamos descarga PNG de cartas");
+		String nombreColeecion= coleccion.getNombre();
 		try {
 			// crear carpeta cartas por coleccion
-			File carpeta = new File(
-					coleccion + "_PNG_cartas");
+			File carpeta = new File((coleccion.getNombre()) + "_PNG_cartas");
+			if (carpeta.exists()) {
+	            boolean result = deleteDirectory(carpeta);
+	            if (result) {
+	                System.out.println("Carpeta borrada.");
+	            } else {
+	                System.out.println("No se pudo borrar la carpeta.");
+	            }
+	        }
 			if (!carpeta.exists()) {
 				carpeta.mkdirs();
 			}
@@ -181,6 +245,8 @@ public class ProcesarColeccion extends Thread {
 				System.out.println(
 						"Imagen de " + carta.getNombreOriginal() + " descargada en " + archivoImagen.getAbsolutePath());
 			}
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -237,6 +303,7 @@ public class ProcesarColeccion extends Thread {
 				carta.setAta(new BigDecimal(ata));
 				carta.setGp(Integer.parseInt(gp));
 				carta.setGpWr(new BigDecimal(gpWr));
+				carta.setColeccion(coleccion);
 
 				// Agregar carta a estructura datos
 				cartas.add(carta);
@@ -255,14 +322,21 @@ public class ProcesarColeccion extends Thread {
 			configuration.configure("hibernate.cfg.xml");
 			sessionFactory = configuration.buildSessionFactory();
 
+			this.coleccion.setNombre(this.nombreColeccion);
 			// procesar CSV
 			cargaCSV();
 			// procesarJSON
-			cargaJson("ltr");
+			cargaJson();
 
-			GestionBBDD gBD = GestionBBDD.getInstance();
-			gBD.insertarCartasEnBDD(cartas);
-			descargarPNG("ltr");
+			ProcesarColeccionDAO coleccionDAO = new ProcesarColeccionDAO();
+			descargarPNG();
+			coleccionDAO.borrarColeccionesPorNombre(this.nombreColeccion);
+			System.out.println("Insert tabla coleccion");
+			coleccion.setInsertado(1);
+			coleccionDAO.insertarColeccion(coleccion);
+			coleccionDAO.insertarCartasEnBDD(cartas);
+			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -271,5 +345,15 @@ public class ProcesarColeccion extends Thread {
 			}
 		}
 	}
+
+	public static Coleccion getColeccion() {
+		return coleccion;
+	}
+
+	public static void setColeccion(Coleccion coleccion) {
+		ProcesadorColeccion.coleccion = coleccion;
+	}
+	
+	
 
 }

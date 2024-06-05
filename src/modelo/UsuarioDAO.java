@@ -60,4 +60,33 @@ public class UsuarioDAO {
             }
         }
     }
+    
+    public void updateUsuario(Usuario usuario) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            
+            
+            Usuario usuarioExistente = session.get(Usuario.class, usuario.getIdUsuario());
+            if (usuarioExistente != null) {
+                // Actualizar el numero de drafts
+                usuarioExistente.setNumDraft(usuarioExistente.getNumDraft() + 1);
+                session.update(usuarioExistente);
+            }
+            
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
 }

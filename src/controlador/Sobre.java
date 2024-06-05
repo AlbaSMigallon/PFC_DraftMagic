@@ -39,5 +39,15 @@ public class Sobre {
 	public void setEsFinSobre(boolean esFinSobre) {
 		this.esFinSobre = esFinSobre;
 	}
+	
+	public void agregarCarta(Carta carta) {
+        if (this.cartasSobre.size() < 14) {
+            this.cartasSobre.add(carta);
+        }
+    }
+	
+	public void eliminarCarta(Carta cartaSeleccionada) {
+		cartasSobre.remove(cartaSeleccionada);
+    }
 
 }

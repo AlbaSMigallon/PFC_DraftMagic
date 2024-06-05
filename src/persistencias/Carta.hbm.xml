@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 19 may 2024 19:58:11 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2 jun 2024 19:24:54 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class catalog="draft_magic" name="persistencias.Carta" optimistic-lock="none" table="carta">
         <comment>Tabla de las cartas y estadisticas de cartas</comment>
@@ -7,6 +7,11 @@
             <column name="ID_CARTA"/>
             <generator class="identity"/>
         </id>
+        <many-to-one class="persistencias.Coleccion" fetch="select" name="coleccion">
+            <column length="45" name="COLECCION">
+                <comment>Nombre de la coleccion a la que pertenece la carta</comment>
+            </column>
+        </many-to-one>
         <property name="nombreOriginal" type="string">
             <column length="100" name="NOMBRE_ORIGINAL">
                 <comment>Nombre original de la carta en ingles</comment>
@@ -40,11 +45,6 @@
         <property name="png" type="string">
             <column length="300" name="PNG">
                 <comment>Direccion de descarga de png de la carta en espaniol</comment>
-            </column>
-        </property>
-        <property name="coleccion" type="string">
-            <column length="45" name="COLECCION">
-                <comment>Nombre de la coleccion a la que pertenece la carta</comment>
             </column>
         </property>
         <property name="seen" type="java.lang.Integer">

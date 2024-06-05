@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 19 may 2024 19:58:11 by Hibernate Tools 5.4.33.Final
+// Generated 2 jun 2024 19:24:53 by Hibernate Tools 5.4.33.Final
 
 import java.math.BigDecimal;
 
@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public class Carta implements java.io.Serializable {
 
 	private Integer idCarta;
+	private Coleccion coleccion;
 	private String nombreOriginal;
 	private String nombreEspaniol;
 	private String rareza;
@@ -16,7 +17,6 @@ public class Carta implements java.io.Serializable {
 	private String color;
 	private String tipo;
 	private String png;
-	private String coleccion;
 	private Integer seen;
 	private BigDecimal alsa;
 	private BigDecimal ata;
@@ -27,9 +27,10 @@ public class Carta implements java.io.Serializable {
 	public Carta() {
 	}
 
-	public Carta(String nombreOriginal, String nombreEspaniol, String rareza, Integer coste, String color, String tipo,
-			String png, String coleccion, Integer seen, BigDecimal alsa, BigDecimal ata, Integer picked, Integer gp,
-			BigDecimal gpWr) {
+	public Carta(Coleccion coleccion, String nombreOriginal, String nombreEspaniol, String rareza, Integer coste,
+			String color, String tipo, String png, Integer seen, BigDecimal alsa, BigDecimal ata, Integer picked,
+			Integer gp, BigDecimal gpWr) {
+		this.coleccion = coleccion;
 		this.nombreOriginal = nombreOriginal;
 		this.nombreEspaniol = nombreEspaniol;
 		this.rareza = rareza;
@@ -37,7 +38,6 @@ public class Carta implements java.io.Serializable {
 		this.color = color;
 		this.tipo = tipo;
 		this.png = png;
-		this.coleccion = coleccion;
 		this.seen = seen;
 		this.alsa = alsa;
 		this.ata = ata;
@@ -52,6 +52,14 @@ public class Carta implements java.io.Serializable {
 
 	public void setIdCarta(Integer idCarta) {
 		this.idCarta = idCarta;
+	}
+
+	public Coleccion getColeccion() {
+		return this.coleccion;
+	}
+
+	public void setColeccion(Coleccion coleccion) {
+		this.coleccion = coleccion;
 	}
 
 	public String getNombreOriginal() {
@@ -108,14 +116,6 @@ public class Carta implements java.io.Serializable {
 
 	public void setPng(String png) {
 		this.png = png;
-	}
-
-	public String getColeccion() {
-		return this.coleccion;
-	}
-
-	public void setColeccion(String coleccion) {
-		this.coleccion = coleccion;
 	}
 
 	public Integer getSeen() {
