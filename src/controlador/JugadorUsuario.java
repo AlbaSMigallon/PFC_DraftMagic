@@ -2,10 +2,12 @@ package controlador;
 
 import java.util.ArrayList;
 
-
 import persistencias.Usuario;
 import persistencias.Carta;
 
+/*
+ * Clase de jugador que utiliza la aplicacion
+ */
 public class JugadorUsuario extends Jugador {
 	private Usuario usuario;
 	protected ArrayList<Carta> mazoConstruido = new ArrayList<Carta>();
@@ -28,8 +30,8 @@ public class JugadorUsuario extends Jugador {
 	}
 
 	public void agregarSobre(Sobre sobre) {
-        this.sobres.add(sobre);
-    }
+		this.sobres.add(sobre);
+	}
 
 	public ArrayList<Carta> getMazoConstruido() {
 		return mazoConstruido;
@@ -38,5 +40,5 @@ public class JugadorUsuario extends Jugador {
 	public void setMazoConstruido(ArrayList<Carta> mazoConstruido) {
 		this.mazoConstruido = mazoConstruido;
 	}
-	
+
 }
