@@ -2,11 +2,12 @@ package controlador;
 
 import java.util.ArrayList;
 
+import persistencias.Carta;
 import persistencias.Mazo;
 
 public abstract class Jugador {
 	protected ArrayList<Sobre> sobres;
-	protected ArrayList<Mazo> mazo;
+	protected ArrayList<Carta> mazo;
 
 	public ArrayList<Sobre> getSobres() {
 		return sobres;
@@ -16,11 +17,11 @@ public abstract class Jugador {
 		this.sobres = sobres;
 	}
 
-	public ArrayList<Mazo> getMazo() {
+	public ArrayList<Carta> getMazo() {
 		return mazo;
 	}
 
-	public void setMazo(ArrayList<Mazo> mazo) {
+	public void setMazo(ArrayList<Carta> mazo) {
 		this.mazo = mazo;
 	}
 

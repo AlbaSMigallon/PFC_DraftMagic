@@ -14,11 +14,9 @@ public class Login {
 	    Usuario usuario = usuarioDAO.obtenerUsuarioPorNombre(nombreUsuario);
 
 	    if (usuario != null) {
-	        if (usuario.getContrasenia().equals(contrasena)) {
-	            return usuario; // Devuelve el usuario si la contraseña es correcta
-	        } else {
-	            return null; // Devuelve null si la contraseña es incorrecta
-	        }
+	       
+	            return usuario;
+	        
 	    } else {
 	        return null; // Devuelve null si el usuario no es encontrado
 	    }

@@ -3,9 +3,10 @@ DROP DATABASE IF EXISTS DRAFT_MAGIC;
 CREATE DATABASE IF NOT EXISTS DRAFT_MAGIC CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE DRAFT_MAGIC;
 
+-- Tabla utilizada para ver las colecciones cargadas
 CREATE TABLE IF NOT EXISTS COLECCION(
     NOMBRE varchar(50) NOT NULL COMMENT 'Nombre de la coleccion',
-    INSERTADO INT(1) NOT NULL DEFAULT 0 COMMENT 'Indica si el proceso de creacion de cartas y de descarga de cartas esta acabado. 1 Insertado completamente 0 no insertado',
+    INSERTADO INT(1) NOT NULL COMMENT '1 Insertado completamente 0 no insertado',
     CONSTRAINT PK_COLECCION PRIMARY KEY (NOMBRE)
 )COMMENT 'Tabla de coleccion para controlar que la coleccion se encuentra insertada al completo';
 ALTER TABLE COLECCION CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS MAZO(
 	FECHA_CREACION TIMESTAMP NULL COMMENT 'Fecha de creacion del mazo',
 	CANTIDAD_CARTAS INT NOT NULL DEFAULT 0 COMMENT 'Cantidad del cartas que componen el mazo',
     WINRATE DECIMAL(6,2) NOT NULL DEFAULT 0 COMMENT 'WINRATE del mazo',
-    CURVA_MANA INT DEFAULT 0 COMMENT 'Curva de mana del mazo',
+    CURVA_MANA DECIMAL(6,2) COMMENT 'Curva de mana del mazo',
     COLOR_W INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo de color blanco',
     COLOR_B INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo de color negro',
     COLOR_R INT DEFAULT 0 COMMENT 'Cantidad de cartas del mazo de color rojo, ',
@@ -67,7 +68,9 @@ CREATE TABLE IF NOT EXISTS MAZO(
     RARAS INT DEFAULT 0 COMMENT 'Cantidad de cartas de rareza rara',
     LEGENDARIAS INT DEFAULT 0 COMMENT 'Cantidad de cartas de rareza legendaria',
     ID_USUARIO INT COMMENT 'Identificador del usuario creador del mazo',
+    COLECCION_NOMBRE VARCHAR(50) COMMENT 'Nombre de la coleccion',
     CONSTRAINT PK_MAZO PRIMARY KEY (ID_MAZO),
+    CONSTRAINT FK_MAZO_COLECCION FOREIGN KEY (COLECCION_NOMBRE) REFERENCES COLECCION(NOMBRE),
 	CONSTRAINT FK_MAZO_ID_USUARIO FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 )COMMENT 'Tabla de historico de mazos construidos';
 

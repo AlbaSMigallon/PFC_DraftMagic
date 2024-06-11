@@ -3,6 +3,7 @@
 
 <hibernate-reverse-engineering>
   <table-filter match-catalog="draft_magic" match-name="carta"/>
+  <table-filter match-catalog="draft_magic" match-name="coleccion"/>
   <table-filter match-catalog="draft_magic" match-name="mazo"/>
   <table-filter match-catalog="draft_magic" match-name="usuario"/>
 </hibernate-reverse-engineering>

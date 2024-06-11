@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 27 may 2024 19:14:56 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2 jun 2024 19:24:54 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class catalog="draft_magic" name="persistencias.Mazo" optimistic-lock="none" table="mazo">
         <comment>Tabla de historico de mazos construidos</comment>
@@ -7,6 +7,11 @@
             <column name="ID_MAZO"/>
             <generator class="identity"/>
         </id>
+        <many-to-one class="persistencias.Coleccion" fetch="select" name="coleccion">
+            <column length="50" name="COLECCION_NOMBRE">
+                <comment>Nombre de la coleccion</comment>
+            </column>
+        </many-to-one>
         <many-to-one class="persistencias.Usuario" fetch="select" name="usuario">
             <column name="ID_USUARIO">
                 <comment>Identificador del usuario creador del mazo</comment>
@@ -27,8 +32,8 @@
                 <comment>WINRATE del mazo</comment>
             </column>
         </property>
-        <property name="curvaMana" type="java.lang.Integer">
-            <column name="CURVA_MANA">
+        <property name="curvaMana" type="big_decimal">
+            <column name="CURVA_MANA" precision="6">
                 <comment>Curva de mana del mazo</comment>
             </column>
         </property>
