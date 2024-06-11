@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import persistencias.Carta;
 import persistencias.Mazo;
 
+/*
+ * Clase abstracta de jugador. Heredan JugadorUsuario y JugadorBot
+ */
 public abstract class Jugador {
 	protected ArrayList<Sobre> sobres;
 	protected ArrayList<Carta> mazo;

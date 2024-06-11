@@ -18,7 +18,10 @@ import java.util.regex.Pattern;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class ProcesadorColeccion extends Thread{
+/*
+ * Clase que se encarga de la carga en BBDD de la coleccion
+ */
+public class ProcesadorColeccion extends Thread {
 
 	private static String nombreCSV;
 	private static String nombreColeccion;
@@ -30,48 +33,52 @@ public class ProcesadorColeccion extends Thread{
 		this.nombreCSV = nombreCSV;
 		this.nombreColeccion = nombreColeccion;
 		this.cartas = new ArrayList<Carta>();
-		this.coleccion= new Coleccion(nombreColeccion);
+		this.coleccion = new Coleccion(nombreColeccion);
 	}
 
 	// Metodo para extraer el valor numerico del coste de mana
 	// ejemplo "mana_cost":"{2}{W}{W}"
 	private static int procesarManaCost(String manaCost) {
 		int totalCost = 0;
-		
-		String[] mana = manaCost.split("\\{");
-		
-		 for (String simbolo : mana) {
-	            if (simbolo.isEmpty()) continue;
-	            simbolo = simbolo.replace("}", "");
 
-	            switch (simbolo) {
-	                case "W":
-	                	totalCost++;
-	                    break;
-	                case "U":
-	                	totalCost++;
-	                    break;
-	                case "B":
-	                	totalCost++;
-	                    break;
-	                case "R":
-	                	totalCost++;
-	                    break;
-	                case "G":
-	                	totalCost++;
-	                    break;
-	                default:
-	                    try {
-	                        totalCost+= Integer.parseInt(simbolo);
-	                    } catch (NumberFormatException e) {
-	                        totalCost = 0;
-	                    }
-	                    break;
-	            }
-		 }
+		String[] mana = manaCost.split("\\{");
+
+		for (String simbolo : mana) {
+			if (simbolo.isEmpty())
+				continue;
+			simbolo = simbolo.replace("}", "");
+
+			switch (simbolo) {
+			case "W":
+				totalCost++;
+				break;
+			case "U":
+				totalCost++;
+				break;
+			case "B":
+				totalCost++;
+				break;
+			case "R":
+				totalCost++;
+				break;
+			case "G":
+				totalCost++;
+				break;
+			default:
+				try {
+					totalCost += Integer.parseInt(simbolo);
+				} catch (NumberFormatException e) {
+					totalCost = 0;
+				}
+				break;
+			}
+		}
 		return totalCost;
 	}
 
+	/*
+	 * metodo que carga el JSON de todas las cartas
+	 */
 	private static void cargaJson() {
 		System.out.println("Iniciamos carga JSON");
 		try (JsonReader reader = new JsonReader(
@@ -186,38 +193,45 @@ public class ProcesadorColeccion extends Thread{
 			e.printStackTrace();
 		}
 	}
-	
-	public static boolean deleteDirectory(File dir) {
-        if (dir.isDirectory()) {
-            // Si es un directorio, recorrer todos los archivos y directorios dentro
-            File[] children = dir.listFiles();
-            if (children != null) {
-                for (File child : children) {
-                    boolean success = deleteDirectory(child);
-                    if (!success) {
-                        return false;
-                    }
-                }
-            }
-        }
-        // Finalmente, borrar el archivo o directorio actual
-        return dir.delete();
-    }
 
+	/*
+	 * Borrar direcctorio de imagenes para controlar si se han quedado cortado el
+	 * proceso de descarga en cargas anteriores
+	 */
+	public static boolean deleteDirectory(File dir) {
+		if (dir.isDirectory()) {
+			// Si es un directorio, recorrer todos los archivos y directorios dentro
+			File[] children = dir.listFiles();
+			if (children != null) {
+				for (File child : children) {
+					boolean success = deleteDirectory(child);
+					if (!success) {
+						return false;
+					}
+				}
+			}
+		}
+		// Finalmente, borrar el archivo o directorio actual
+		return dir.delete();
+	}
+
+	/*
+	 * Descargar pngs de las cartas de la coleccion
+	 */
 	private static void descargarPNG() {
 		System.out.println("Iniciamos descarga PNG de cartas");
-		String nombreColeecion= coleccion.getNombre();
+		String nombreColeecion = coleccion.getNombre();
 		try {
 			// crear carpeta cartas por coleccion
 			File carpeta = new File((coleccion.getNombre()) + "_PNG_cartas");
 			if (carpeta.exists()) {
-	            boolean result = deleteDirectory(carpeta);
-	            if (result) {
-	                System.out.println("Carpeta borrada.");
-	            } else {
-	                System.out.println("No se pudo borrar la carpeta.");
-	            }
-	        }
+				boolean result = deleteDirectory(carpeta);
+				if (result) {
+					System.out.println("Carpeta borrada.");
+				} else {
+					System.out.println("No se pudo borrar la carpeta.");
+				}
+			}
 			if (!carpeta.exists()) {
 				carpeta.mkdirs();
 			}
@@ -245,13 +259,15 @@ public class ProcesadorColeccion extends Thread{
 				System.out.println(
 						"Imagen de " + carta.getNombreOriginal() + " descargada en " + archivoImagen.getAbsolutePath());
 			}
-			
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	/*
+	 * Carga de CSV con las estadisticas de la coleccion
+	 */
 	private static void cargaCSV() {
 		System.out.println("Iniciamos carga CSV");
 		String linea;
@@ -315,6 +331,9 @@ public class ProcesadorColeccion extends Thread{
 		}
 	}
 
+	/*
+	 * Metodo run para iniciar la carga de la coleccion
+	 */
 	public void run() {
 		SessionFactory sessionFactory = null;
 		try {
@@ -335,7 +354,6 @@ public class ProcesadorColeccion extends Thread{
 			coleccion.setInsertado(1);
 			coleccionDAO.insertarColeccion(coleccion);
 			coleccionDAO.insertarCartasEnBDD(cartas);
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -353,7 +371,5 @@ public class ProcesadorColeccion extends Thread{
 	public static void setColeccion(Coleccion coleccion) {
 		ProcesadorColeccion.coleccion = coleccion;
 	}
-	
-	
 
 }

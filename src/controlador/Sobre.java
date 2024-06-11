@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import persistencias.Carta;
 
+/*
+ * Clase Sobre
+ */
 public class Sobre {
 	private int numSobre;
 	private ArrayList<Carta> cartasSobre;
@@ -39,15 +42,15 @@ public class Sobre {
 	public void setEsFinSobre(boolean esFinSobre) {
 		this.esFinSobre = esFinSobre;
 	}
-	
+
 	public void agregarCarta(Carta carta) {
-        if (this.cartasSobre.size() < 14) {
-            this.cartasSobre.add(carta);
-        }
-    }
-	
+		if (this.cartasSobre.size() < 14) {
+			this.cartasSobre.add(carta);
+		}
+	}
+
 	public void eliminarCarta(Carta cartaSeleccionada) {
 		cartasSobre.remove(cartaSeleccionada);
-    }
+	}
 
 }

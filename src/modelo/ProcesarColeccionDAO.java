@@ -12,6 +12,9 @@ import org.hibernate.query.Query;
 import persistencias.Carta;
 import persistencias.Coleccion;
 
+/*
+ * Clase Data Access Object de ProcesarColeccion. Se utiliza para separar la logica de acceso a datos del resto de la aplicacion
+ */
 public class ProcesarColeccionDAO {
 	private SessionFactory sessionFactory;
 
@@ -49,12 +52,10 @@ public class ProcesarColeccionDAO {
 			cerrarPoolConexiones();
 		}
 	}
-	
-	
 
 	public List<Coleccion> selectColeccion(String nombreColeccion) {
 		Session session = null;
-		List<Coleccion> colecciones= new ArrayList<Coleccion>();
+		List<Coleccion> colecciones = new ArrayList<Coleccion>();
 
 		try {
 			session = sessionFactory.openSession();
@@ -72,49 +73,48 @@ public class ProcesarColeccionDAO {
 		}
 		return colecciones;
 	}
-	
-	public void insertarColeccion(Coleccion coleccion) {
-        Session session = null;
-        
-        try {
-            session = sessionFactory.getCurrentSession();
-            session.beginTransaction();
-            session.save(coleccion);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            if (session.getTransaction() != null) {
-            	session.getTransaction().rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-    }
-	
-	public void borrarColeccionesPorNombre(String nombreColeccion) {
-	    Session session = null;
 
-	    try {
-	        session = sessionFactory.getCurrentSession();
-	        session.beginTransaction();
-	        Query query = session.createQuery("DELETE FROM Coleccion WHERE nombre = :nombre")
-	                             .setParameter("nombre", nombreColeccion);
-	        query.executeUpdate();
-	        session.getTransaction().commit();
-	    } catch (Exception e) {
-	         if (session.getTransaction() != null) {
-	             session.getTransaction().rollback();
-	         }
-	        e.printStackTrace();
-	    } finally {
-	        if (session != null) {
-	            session.close();
-	        }
-	    }
+	public void insertarColeccion(Coleccion coleccion) {
+		Session session = null;
+
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			session.save(coleccion);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 
+	public void borrarColeccionesPorNombre(String nombreColeccion) {
+		Session session = null;
+
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			Query query = session.createQuery("DELETE FROM Coleccion WHERE nombre = :nombre").setParameter("nombre",
+					nombreColeccion);
+			query.executeUpdate();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
 
 	public ArrayList<Carta> obtenerCartasColeccion(String nombreColeccion) {
 		Session session = null;
@@ -124,7 +124,8 @@ public class ProcesarColeccionDAO {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
 
-			Query query = session.createQuery("FROM Carta WHERE coleccion.nombre=:nombreColeccion").setParameter("nombreColeccion", nombreColeccion);
+			Query query = session.createQuery("FROM Carta WHERE coleccion.nombre=:nombreColeccion")
+					.setParameter("nombreColeccion", nombreColeccion);
 			cartasColeccion = (ArrayList<Carta>) query.getResultList();
 
 		} catch (Exception e) {
